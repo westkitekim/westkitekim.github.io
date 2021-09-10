@@ -104,8 +104,8 @@ analytics:
 author:
   name             : "Stranger"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "어제보다 나은 오늘이 되기를, 그렇게 콩나물처럼 쑥쑥 성장하기를"
-  location         : "Somewhere"
+  bio              : "어제보다 자란 오늘의 콩나물"
+  location         : ""
   email            :
   links:
     - label: "Email"
