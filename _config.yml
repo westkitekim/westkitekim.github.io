@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "grey" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "ko-KR"
@@ -105,8 +105,8 @@ author:
   name             : "Stranger"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "어제보다 성장한 오늘의 콩나물"
-  location         : ""
-  email            :
+  location         : # "Seoul"
+  email            : "westkite418@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
