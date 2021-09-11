@@ -11,7 +11,7 @@ html {
   font-size: 16px;
 
   @include breakpoint($medium) {
-    font-size: 16px; //원래 18
+    font-size: 18px; //원래 18
   }
 
   @include breakpoint($large) {
