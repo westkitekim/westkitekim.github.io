@@ -148,67 +148,68 @@ last_modified_at: 2021-09-09
   - sql문과 예외처리 if 조건문 확인
   - 뒤에 나올 checkAccountNoAndPassword()는 잔액조회 메서드와 모두 동일하나 return 값만 없다.
 
-```java
+  ```java
+  public int findBalanceByAccountNo(String accountNo, String password) throws SQLException, AccountNotFoundException, NotMatchedPasswordException {
+          ...
+  			String sql = "select password, balance from account where account_no = ?";
+  			...
+  			//exception이 발생하면 return되지 않고 바로 catch로 날아간다 
+  			if(rs.next()) {//계좌번호에 해당하는 계좌가 있는 경우
+  				if(rs.getString(1).equals(password)) {//비밀번호가 일치하면
+  					//2번째 값인 balance 반환 
+  					balance = rs.getInt(2);
+  				}else {
+  					throw new NotMatchedPasswordException("계좌의 패스워드가 일치하지 않습니다");
+  				}	
+  			}else {//계좌번호에 해당하는 계좌가 존재하지 않는 경우
+  				   //사용자 정의 예외 발생시킨다
+  				throw new AccountNotFoundException(accountNo + "계좌정보에 해당하는 계좌가 존재하지 않습니다");
+  	...
+  		return balance;
+  	}
+  ```
 
-	public int findBalanceByAccountNo(String accountNo, String password) throws SQLException, AccountNotFoundException, NotMatchedPasswordException {
-        ...
-			String sql = "select password, balance from account where account_no = ?";
-			...
-			//exception이 발생하면 return되지 않고 바로 catch로 날아간다 
-			if(rs.next()) {//계좌번호에 해당하는 계좌가 있는 경우
-				if(rs.getString(1).equals(password)) {//비밀번호가 일치하면
-					//2번째 값인 balance 반환 
-					balance = rs.getInt(2);
-				}else {
-					throw new NotMatchedPasswordException("계좌의 패스워드가 일치하지 않습니다");
-				}	
-			}else {//계좌번호에 해당하는 계좌가 존재하지 않는 경우
-				   //사용자 정의 예외 발생시킨다
-				throw new AccountNotFoundException(accountNo + "계좌정보에 해당하는 계좌가 존재하지 않습니다");
-	...
-		return balance;
-	}
-```
+  
 
-#### 	3 - 3. 4 계좌 입금 메서드 (deposit()) 
+  #### 3 - 3. 4 계좌 입금 메서드 (deposit()) 
 
-- 예외 처리 : checkAccountNoAndPassword을 통해 2가지 예외(계좌번호 확인, 패스워드 일치)를 처리한다.
-- 원래 구현했던 코드는 balance라는 변수에 findBalanceByAccount()메서드의 잔액을 넣어주고 다음과 같이 구현했었다.
+  - 예외 처리 : checkAccountNoAndPassword을 통해 2가지 예외(계좌번호 확인, 패스워드 일치)를 처리한다.
+  - 원래 구현했던 코드는 balance라는 변수에 findBalanceByAccount()메서드의 잔액을 넣어주고 다음과 같이 구현했었다.
 
-```java
-String sql = "update account set balance = ? where account_no = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, balance + money);
-```
+  ```java
+  String sql = "update account set balance = ? where account_no = ?";
+  			pstmt = con.prepareStatement(sql);
+  			pstmt.setInt(1, balance + money);
+  ```
 
-- 하지만 이 코드는 값을 넣어줄 때 연산이 되기 때문에 여러 명의 사용자가 입금을 할 때 잔액의 변동사항이 생길 수 있기 때문에 완전히 무결성을 충족하는 코드라고 보기는 어렵다.
+  - 하지만 이 코드는 값을 넣어줄 때 연산이 되기 때문에 여러 명의 사용자가 입금을 할 때 잔액의 변동사항이 생길 수 있기 때문에 완전히 무결성을 충족하는 코드라고 보기는 어렵다.
 
-  따라서 아래와 같이 update sql 구문 안에서 연산을 처리하는 코드로 리팩토링한다.
+    따라서 아래와 같이 update sql 구문 안에서 연산을 처리하는 코드로 리팩토링한다.
 
-```java
-	public void deposit(String accountNo, String password, int money) throws NoMoneyException, SQLException, AccountNotFoundException, NotMatchedPasswordException {
-		if(money <= 0) {
-			throw new NoMoneyException("입금액은 0원을 초과해야 합니다");
-		}
-		checkAccountNoAndPassword(accountNo, password);
-		...
-		try { 
-			con = getConnection();
-			String sql = "update account set balance = balance + ? where account_no = ?";
-			...
-		}finally {
-			closeAll(pstmt, con);
-		}
-	}
-```
+  ```java
+  	public void deposit(String accountNo, String password, int money) throws NoMoneyException, SQLException, AccountNotFoundException, NotMatchedPasswordException {
+  		if(money <= 0) {
+  			throw new NoMoneyException("입금액은 0원을 초과해야 합니다");
+  		}
+  		checkAccountNoAndPassword(accountNo, password);
+  		...
+  		try { 
+  			con = getConnection();
+  			String sql = "update account set balance = balance + ? where account_no = ?";
+  			...
+  		}finally {
+  			closeAll(pstmt, con);
+  		}
+  	}
+  ```
 
-#### 	
+  
 
-#### 	3 - 3. 5 계좌 출금 메서드 (withdraw())
+  #### 3 - 3. 5 계좌 출금 메서드 (withdraw())
 
-- 출금메서드는 sql 구문에서 money를 빼주는 것과 입금 메서드에서 예외처리를 InsufficientBalanceException을 추가하는 것 외에 코드는 거의 동일하다 .
+  - 출금메서드는 sql 구문에서 money를 빼주는 것과 입금 메서드에서 예외처리를 InsufficientBalanceException을 추가하는 것 외에 코드는 거의 동일하다 .
 
-- 이체하려는 금액이 잔액보다 많을 경우에 발생하는 예외를 입금메서드의 예외에서 추가한다 (총 4가지 예외)
+  - 이체하려는 금액이 잔액보다 많을 경우에 발생하는 예외를 입금메서드의 예외에서 추가한다 (총 4가지 예외)
 
   ```java
   if(money <= 0) {
@@ -220,23 +221,24 @@ String sql = "update account set balance = ? where account_no = ?";
   		}
   ```
 
-####    3 - 3. 6 계좌이체 메서드(transfer())
+  ####   
 
-- 주의할 점>
-  1. 계좌이체에서는 입금자 계좌에서의 출금과 예금주 계좌에 입금 과정이 한 몸처럼 같이 진행돼야 하기 때문에 transaction 처리가 필요하다. 
-  2. withdraw() 출금 메서드를 사용해도 sql 을 2번 작성한 결과와 동일하게 나올 수 있지만 transaction의 진행은 오직 1개의 Connection에서만 1개의 Session에서만 진행되어야 하기 때문에 좋은 코드라고 할 수 없다. 
-     - withdraw를 사용되도 정상적으로 결과값이 나오는 이유? Connection 안의 withdraw() Connection이 있기 때문에 겉으로는 1개의 Connection이라고 인식하는 것으로 예상해본다..(추후 Update필요!! )
-  3. 예외처리가 많아지면 가장 간단한 예외부터 처리한다.(자원낭비 최소화의 목적) -  NoMoneyException
+  ####  3 - 3. 6 계좌이체 메서드(transfer())
 
--  transaction 처리를 위해 필요한 것은 무엇일까? 
+  - 주의할 점>
+    1. 계좌이체에서는 입금자 계좌에서의 출금과 예금주 계좌에 입금 과정이 한 몸처럼 같이 진행돼야 하기 때문에 transaction 처리가 필요하다. 
+    2. withdraw() 출금 메서드를 사용해도 sql 을 2번 작성한 결과와 동일하게 나올 수 있지만 transaction의 진행은 오직 1개의 Connection에서만 1개의 Session에서만 진행되어야 하기 때문에 좋은 코드라고 할 수 없다. 
+       - withdraw를 사용되도 정상적으로 결과값이 나오는 이유? Connection 안의 withdraw() Connection이 있기 때문에 겉으로는 1개의 Connection이라고 인식하는 것으로 예상해본다..(추후 Update필요!! )
+    3. 예외처리가 많아지면 가장 간단한 예외부터 처리한다.(자원낭비 최소화의 목적) -  NoMoneyException
 
-  1. setAutoCommit(false) - 자동 커밋모드 해제
-  2. commit() - 정상적으로 수행이 완료됐으면 db 연동
-  3. rollback() - 하나라도 정상적으로 수행이 안됐으면 원래 상태로 복귀
-  4. throw - 예외가 발생한 상황을 구현부 안에서만 처리하는 것이 아니라 사용자에게 알려주기 위해 예외 던진다.
+  -  transaction 처리를 위해 필요한 것은 무엇일까? 
+    1. setAutoCommit(false) - 자동 커밋모드 해제
+    2. commit() - 정상적으로 수행이 완료됐으면 db 연동
+    3. rollback() - 하나라도 정상적으로 수행이 안됐으면 원래 상태로 복귀
+    4. throw - 예외가 발생한 상황을 구현부 안에서만 처리하는 것이 아니라 사용자에게 알려주기 위해 예외 던진다.
 
-  ```java
-  	public void transfer(String senderAccountNo, String password, int money, String receiverAccountNo) throws NoMoneyException, SQLException, AccountNotFoundException, NotMatchedPasswordException, InsufficientBalanceException {
+- ```java
+  public void transfer(String senderAccountNo, String password, int money, String receiverAccountNo) throws NoMoneyException, SQLException, AccountNotFoundException, NotMatchedPasswordException, InsufficientBalanceException {
   		//0원 초과 예외확인
   		if(money <= 0) {
   			throw new NoMoneyException("이체액은 0원을 초과해야 합니다");
@@ -271,13 +273,13 @@ String sql = "update account set balance = ? where account_no = ?";
   	}
   ```
 
-####    3 - 3. 7 가장 높은 잔액을 보유한 계좌를 조회하는 메서드(findHighestBalanceAccount())
+  ####  
 
-- 이 메서드는 sql 구문 연습을 해보기 위한 메서드라고 할 수 있다. 해당 sql은 subquery임을 유의하자. 
+  ####   3 - 3. 7 가장 높은 잔액을 보유한 계좌를 조회하는 메서드(findHighestBalanceAccount())
 
-- 또한 가장 높은 잔액을 보유한 계좌가 1개 뿐만이 아닌 여러 개일 수 있기 때문에 다수의 객체를 담기 위해 ArrayList 자료구조체를 사용한다. 
-
-- 코드는 지금까지 작성해왔던 코드들과 유사하므로 sql 구문만 확인해본다.
+  - 이 메서드는 sql 구문 연습을 해보기 위한 메서드라고 할 수 있다. 해당 sql은 subquery임을 유의하자. 
+  - 또한 가장 높은 잔액을 보유한 계좌가 1개 뿐만이 아닌 여러 개일 수 있기 때문에 다수의 객체를 담기 위해 ArrayList 자료구조체를 사용한다. 
+  - 코드는 지금까지 작성해왔던 코드들과 유사하므로 sql 구문만 확인해본다.
 
   ```java
   public ArrayList<AccountVO> findHighestBalanceAccount() throws SQLException {
@@ -290,11 +292,20 @@ String sql = "update account set balance = ? where account_no = ?";
   }
   ```
 
-- 잔액의 값이 최고 잔액일 때, 즉 최고 잔액을 따로 구한 다음 where 조건절 안에 넣어줘야 한다. 
+  - 잔액의 값이 최고 잔액일 때, 즉 최고 잔액을 따로 구한 다음 where 조건절 안에 넣어줘야 한다. 
 
-  
+  ```java
+  public ArrayList<AccountVO> findHighestBalanceAccount() throws SQLException {
+  		ArrayList<AccountVO> list = new ArrayList<AccountVO>();
+      ...
+          StringBuilder sql = new StringBuilder("select account_no, name, balance ");
+  			sql.append("from account ");
+  			sql.append("where balance = (select max(balance) from account)");
+      ...
+  }
+  ```
 
-  > ## 4.  테스트 
+> ## 4.  테스트 
 
 - 가장 핵심적이였던 계좌이체 기능을 확인해본다면 다음과 같이 이체가 이루어 진 것을 확인해 볼 수 있다
 
