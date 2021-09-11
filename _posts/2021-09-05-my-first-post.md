@@ -1,6 +1,6 @@
 ---
-title: "first"
-excerpt: md 파일에 마크다운 문법으로 작성하여 Github 원격 저장소에 업로드
+title: "Hello Blog!"
+excerpt: 시작은 미약하였으나 삽질은 태산이 되어 끝은 타노스가 되리라...
 
 categorires: 
     - Blog
