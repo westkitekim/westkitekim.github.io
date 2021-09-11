@@ -1,6 +1,6 @@
 ---
-title: "[DB] Account Mini Project"
-excerpt : Mini project
+title: "[Database/JDBC] Account Mini Project"
+excerpt : 
 
 categories: 
   - Blog
@@ -15,7 +15,11 @@ last_modified_at: 2021-09-09
 
 ---
 
-# Account Mini Project
+# Account Mini Project(계좌 관리 프로그램)
+
+## 0. 사용 목적
+
+​	
 
 ## 1. 요구사항
 
