@@ -76,7 +76,7 @@ last_modified_at: 2021-09-09
   4.  NoMoneyException  : 입금액, 출금액, 이체액 0원 초과 
   5. InsufficientBalanceException : 계좌이체시 송금자의 잔액이 이체액보다 적을 경우 이체 불가
 
-- 프로젝트의 전박적인 구조를 UML(StarUML사용)을 통해 도식화하면 아래과 같다. 
+- 프로젝트의 전반적인 구조를 UML(StarUML사용)을 통해 도식화하면 아래과 같다. 
 
   ![화면 캡처 2021-09-11 130249](https://user-images.githubusercontent.com/88620416/132935916-70fb85b6-a133-45d4-8e66-469107f98015.png)
 
