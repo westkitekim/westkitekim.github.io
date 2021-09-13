@@ -120,23 +120,22 @@ last_modified_at: 2021-09-09
 
   ```java
   public void createAccount(AccountVO accountVO) throws SQLException, CreateAccountException {
-  		//if 조건문을 먼저 상단에 해줘야 조건에 맞지 않을 시 아래 구문을 수행하지 않고 
-  		//바로 예외처리를 하여 벗어난다 (예외 던지고 main에서 catch로 처리하고 끝)
-  		if(accountVO.getBalance() < 1000) 
-  			throw new CreateAccountException("계좌 개설시 초기 납입금은 1000원 이상이어야 합니다");
-  		Connection con = null;
-  		PreparedStatement pstmt = null;
-  		try {
-  			con = getConnection();
-  			String sql = "insert into account(account_no, name, password, balance) values(account_seq.nextval, ?, ?, ?)";
-  			pstmt = con.prepareStatement(sql);
-  			pstmt.setString(1, accountVO.getName());
-  			//.... 값에 할당하는 과정 생략 
-  			pstmt.executeUpdate();
-  		}finally {
-  			closeAll(pstmt, getConnection());
-  		}
+  	//if 조건문을 먼저 상단에 해줘야 조건에 맞지 않을 시 아래 구문을 수행하지 않고 
+  	//바로 예외처리를 하여 벗어난다 (예외 던지고 main에서 catch로 처리하고 끝)
+  	if(accountVO.getBalance() < 1000) 
+  		throw new CreateAccountException("계좌 개설시 초기 납입금은 1000원 이상이어야 합니다");
+  	...
+  	try {
+  		con = getConnection();
+  		String sql = "insert into account(account_no, name, password, balance) values(account_seq.nextval, ?, ?, ?)";
+  		pstmt = con.prepareStatement(sql);
+  		pstmt.setString(1, accountVO.getName());
+  		//.... 값에 할당하는 과정 생략 
+  		pstmt.executeUpdate();
+  	}finally {
+  		closeAll(pstmt, getConnection());
   	}
+  }
   ```
 
   
@@ -150,23 +149,23 @@ last_modified_at: 2021-09-09
 
   ```java
   public int findBalanceByAccountNo(String accountNo, String password) throws SQLException, AccountNotFoundException, NotMatchedPasswordException {
-          ...
-  			String sql = "select password, balance from account where account_no = ?";
-  			...
-  			//exception이 발생하면 return되지 않고 바로 catch로 날아간다 
-  			if(rs.next()) {//계좌번호에 해당하는 계좌가 있는 경우
-  				if(rs.getString(1).equals(password)) {//비밀번호가 일치하면
-  					//2번째 값인 balance 반환 
-  					balance = rs.getInt(2);
-  				}else {
-  					throw new NotMatchedPasswordException("계좌의 패스워드가 일치하지 않습니다");
-  				}	
-  			}else {//계좌번호에 해당하는 계좌가 존재하지 않는 경우
-  				   //사용자 정의 예외 발생시킨다
-  				throw new AccountNotFoundException(accountNo + "계좌정보에 해당하는 계좌가 존재하지 않습니다");
+      ...
+  	String sql = "select password, balance from account where account_no = ?";
   	...
-  		return balance;
-  	}
+  	//exception이 발생하면 return되지 않고 바로 catch로 날아간다 
+  	if(rs.next()) {//계좌번호에 해당하는 계좌가 있는 경우
+  		if(rs.getString(1).equals(password)) {//비밀번호가 일치하면
+  			//2번째 값인 balance 반환 
+  			balance = rs.getInt(2);
+  		}else {
+  			throw new NotMatchedPasswordException("계좌의 패스워드가 일치하지 않습니다");
+  		}	
+  	}else {//계좌번호에 해당하는 계좌가 존재하지 않는 경우
+  		//사용자 정의 예외 발생시킨다
+  		throw new AccountNotFoundException(accountNo + "계좌정보에 해당하는 계좌가 존재하지 않습니다");
+  	...
+  return balance;
+  }
   ```
 
   
@@ -187,20 +186,20 @@ last_modified_at: 2021-09-09
     따라서 아래와 같이 update sql 구문 안에서 연산을 처리하는 코드로 리팩토링한다.
 
   ```java
-  	public void deposit(String accountNo, String password, int money) throws NoMoneyException, SQLException, AccountNotFoundException, NotMatchedPasswordException {
-  		if(money <= 0) {
-  			throw new NoMoneyException("입금액은 0원을 초과해야 합니다");
-  		}
-  		checkAccountNoAndPassword(accountNo, password);
-  		...
-  		try { 
-  			con = getConnection();
-  			String sql = "update account set balance = balance + ? where account_no = ?";
-  			...
-  		}finally {
-  			closeAll(pstmt, con);
-  		}
+  public void deposit(String accountNo, String password, int money) throws NoMoneyException, SQLException, AccountNotFoundException, NotMatchedPasswordException {
+  	if(money <= 0) {
+  		throw new NoMoneyException("입금액은 0원을 초과해야 합니다");
   	}
+  	checkAccountNoAndPassword(accountNo, password);
+  	...
+  	try { 
+  		con = getConnection();
+  		String sql = "update account set balance = balance + ? where account_no = ?";
+  		...
+  	}finally {
+  		closeAll(pstmt, con);
+  	}
+  }
   ```
 
   
@@ -213,12 +212,12 @@ last_modified_at: 2021-09-09
 
   ```java
   if(money <= 0) {
-  			throw new NoMoneyException("출금액은 0원을 초과해야 합니다");
-  		}
-  		int balance = findBalanceByAccountNo(accountNo, password);
-  		if(balance < money) {
-  			throw new InsufficientBalanceException("잔액보다 출금액이 커서 출금할 수 없습니다");
-  		}
+  	throw new NoMoneyException("출금액은 0원을 초과해야 합니다");
+  }
+  int balance = findBalanceByAccountNo(accountNo, password);
+  if(balance < money) {
+  	throw new InsufficientBalanceException("잔액보다 출금액이 커서 출금할 수 없습니다");
+  }
   ```
 
   ####   
@@ -239,38 +238,38 @@ last_modified_at: 2021-09-09
 
 - ```java
   public void transfer(String senderAccountNo, String password, int money, String receiverAccountNo) throws NoMoneyException, SQLException, AccountNotFoundException, NotMatchedPasswordException, InsufficientBalanceException {
-  		//0원 초과 예외확인
-  		if(money <= 0) {
-  			throw new NoMoneyException("이체액은 0원을 초과해야 합니다");
-  		}
-  		//수금자 계좌번호 확인
-  		if(existsAccountNo(receiverAccountNo) == false) {//앞에 ! 연산자 사용가능
-  			throw new AccountNotFoundException("이체받을 계좌가 존재하지 않습니다");
-  		}
-  		//송금자 비밀번호, 계좌 확인
-  		int balance = findBalanceByAccountNo(senderAccountNo, password);
-  		if(balance < money) {//잔액확인
-  			throw new InsufficientBalanceException("잔액 부족으로 이체할 수 없습니다");
-  		}
-  		...
-  		try {
-  			con = getConnection();
-  			//트랜잭션 제어를 위해 수동커밋모드로 설정
-  			con.setAutoCommit(false);
-  			//송금자 계좌에서 출금
-  			String withdrawSql = "update account set balance = balance - ? where account_no = ?";
-              ...
-  			//예금주의 계좌에 입금
-  			String depositSql = "update account set balance = balance + ? where account_no = ?";
-  			...
-  			con.commit();
-  		} catch(Exception e) {//예외 발생시 rollback을 통해 원상태로 복귀 & 예외 전파
-  			//문제가 발생하면 작업을 취소하고 원상태로 되돌린다
-  			con.rollback();
-  			System.out.println("계좌이체 transaction 내에서 예외 발생");
-  			throw e;
-              ...
+  	//0원 초과 예외확인
+  	if(money <= 0) {
+  		throw new NoMoneyException("이체액은 0원을 초과해야 합니다");
   	}
+  	//수금자 계좌번호 확인
+  	if(existsAccountNo(receiverAccountNo) == false) {//앞에 ! 연산자 사용가능
+  		throw new AccountNotFoundException("이체받을 계좌가 존재하지 않습니다");
+  	}
+  	//송금자 비밀번호, 계좌 확인
+  	int balance = findBalanceByAccountNo(senderAccountNo, password);
+  	if(balance < money) {//잔액확인
+  		throw new InsufficientBalanceException("잔액 부족으로 이체할 수 없습니다");
+  	}
+  	...
+  	try {
+  		con = getConnection();
+  		//트랜잭션 제어를 위해 수동커밋모드로 설정
+  		con.setAutoCommit(false);
+  		//송금자 계좌에서 출금
+  		String withdrawSql = "update account set balance = balance - ? where account_no = ?";
+           ...
+  		//예금주의 계좌에 입금
+  		String depositSql = "update account set balance = balance + ? where account_no = ?";
+  		...
+  		con.commit();
+  	} catch(Exception e) {//예외 발생시 rollback을 통해 원상태로 복귀 & 예외 전파
+  		//문제가 발생하면 작업을 취소하고 원상태로 되돌린다
+  		con.rollback();
+  		System.out.println("계좌이체 transaction 내에서 예외 발생");
+  		throw e;
+           ...
+  }
   ```
 
   ####  

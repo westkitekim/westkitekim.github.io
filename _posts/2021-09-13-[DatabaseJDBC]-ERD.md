@@ -21,8 +21,6 @@ last_modified_at: 2021-09-13
 
 > ## 1. ERD(Entity Relationship Diaram)란?
 
------
-
 - ERD(Entitty Relationship Diagram) 은 개체-관계-모델링, 즉 관계형 데이터베이스 설계를 위한 다이어그램을 말한다. 영어 약자 그대로 **'존재하고 있는 것(Entity)들의 관계(Relationship)을 나타낸 도표(Diagram)'** 이다.
 
 - 데이터의 요구분석사항을 도식화 한 관계로 나타내는 것이라고 할 수 있다. 요구사항을 도식화했다는 점에서는 UML과 동일하다. 하지만 UML은 Application에서의 모델링 기법이며  ERD는 데이터베이스를 이용한 모델링 기법이라는 차이점이 있다. 
@@ -68,8 +66,6 @@ last_modified_at: 2021-09-13
 
 > ## 3.  Setting
 
-------------
-
 - File -> New -> Logical/Physical 버튼 선택 -> 작성 시엔 Logical 데이터 모델링부터 구성
 - ERWIN 환경 설정 
   메뉴 Model - Model Properties... 선택 -> 세 번째 Notation탭에서 Logical Notation Physical Notation영역 모두 IE옵션 버튼을 선택 
@@ -79,9 +75,7 @@ last_modified_at: 2021-09-13
 - HTML 안나올때는 경로 변경 : Report Template Builder -> Edit -> Properties ->Export탭-> Generated File 위치변경
 - 테이블 복사 과정은 ctrl + c, ctrl + v로 동일하나 복사된 개체가 원래 객체에 바로 위에 덮어져있기 때문에 끌어서 빼준다.
 
-## 4.  ERD 표기법
-
-------
+> ## 4.  ERD 표기법
 
 - 보통 테이블 하나를 표기하는 방법을 다음과 같이 작성한다. 
 - Tab key로 이동하면서 최상단에 개체의 이름, 기본키, 일반 속성 영역 순으로 작성한다. 
