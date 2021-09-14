@@ -3,13 +3,13 @@
    ========================================================================== */
 
 /* Colors */
-$background-color: #6f4ea3 !default; //배경색
-$text-color: #a8a8a5 !default; //텍스트 색깔(제목,내용,프로필글씨,블로그네임까지)
+$background-color: #7d4fc7 !default; //배경색
+$text-color: #eeeee8 !default; //텍스트 색깔(제목,내용,프로필글씨,블로그네임까지)
 $muted-text-color: #cdcec5 !default; //toc글, 아래 태그,카테고리 글씨
-$primary-color: #60a042 !default;
+$primary-color: #f7eb4d !default;
 $border-color: mix(#fff, #393e46, 75%) !default;
 $footer-background-color: $primary-color !default;
-$link-color: #81b14b !default; //홈화면 포스트 제목 링크 색상
+$link-color: #f7eb4d !default; //홈화면 포스트 제목 링크 색상
 $masthead-link-color: $text-color !default;
 $masthead-link-color-hover: $text-color !default;
 $navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
