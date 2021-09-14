@@ -2,6 +2,16 @@
 title: "[Database/JDBC] Foreign Key 와 Join"
 excerpt:
 
+categories:
+  - Database
+tags:
+  [Database, jave, JDBC]
+
+toc: true
+toc_sticky: true
+
+date: 2021-09-13
+last_modified_at: 2021-09-13
 
 ---
 
