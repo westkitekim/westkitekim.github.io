@@ -46,15 +46,13 @@ last_modified_at: 2021-09-13
 
   1. 식별관계
      - 부모 테이블의 기본키 혹은 복합키가 자식 테이블의 기본키 혹은 복합키의 구성원으로 전이되는 관계 (ex. 사원과 신체정보 테이블)
-     - Relationship 에서 실선으로 표시 , 기본키(PK) 공유
+     - Relationship 에서 실선으로 표시 , 기본키(PK)를 서로 공유(각 테이블의 기본키가 같다)
   2. 비식별관계
      - 부모 테이블의 기본키 혹은 복합키가 자식 테이블의 일반속성으로 전이되는 관계 (ex. 부서워 사원 테이블)
-     - 부모테이블의 기본키(PK)가 자식테이블의 일반속성으로 들어가는 관계
+     - 부모테이블의 기본키(PK)가 자식테이블의 일반속성으로 들어가는 관계(기본키는 다르지만 부모테이블의 기본키를 일반속성으로 가지고 있음)
      - Relationship 에서 점선으로 표시
 
 > ## 2. ERD Tools
-
------
 
 - ERD를 만들기 위해 다음과 같이 무료 및 유료의 다양한 도구들이 있다
 
@@ -62,7 +60,7 @@ last_modified_at: 2021-09-13
 
 - 무료 소프트웨어 : DBDesignr-Fork, 다이어, 페렛, 카이비오, MySQL 웍벤치... etc
 
-  cf) 다양항 도구들이 있지만 여기서는 ERwin를 사용하였다. 
+  cf) 다양한 도구들이 있으며 여기서는 ERwin를 사용하였다. 
 
 > ## 3.  Setting
 
@@ -72,7 +70,7 @@ last_modified_at: 2021-09-13
 - 데이터 타입 변경 : 메뉴 Model - Model Properties... 선택 -> 네 번째 Defaults 탭에서 Default Null Option 에서 2개 모두 Not Null, Default Datatype 에서 Logical, Physical 모두 VARCHAR2(100) 으로 설정 (편의를 위한 설정일 뿐 나중에 다시 변경해서 사용 가능)
 - 데이터 타입 명시 : 메뉴 Format - Table Display - Column Datatype 체크하면 데이터 타입을 명시해준다.
 - 이미지 추출 : 메뉴 Tools - Report Template Builder - Report Builder - Report Templates - Picture 선택후 화살표 클릭 -> File -run - browser 뜨면 이미지 다운 가능
-- HTML 안나올때는 경로 변경 : Report Template Builder -> Edit -> Properties ->Export탭-> Generated File 위치변경
+- HTML 안나올때는 경로 변경 : Report Template Builder - Edit -  Properties - Export탭 -  Generated File 위치변경
 - 테이블 복사 과정은 ctrl + c, ctrl + v로 동일하나 복사된 개체가 원래 객체에 바로 위에 덮어져있기 때문에 끌어서 빼준다.
 
 > ## 4.  ERD 표기법
@@ -95,13 +93,16 @@ last_modified_at: 2021-09-13
 - 실선은 식별관계, 점선은 비식별관계(상단의 '1. ERD란?' 참고)
 - 위 테이블을 이용하여 다음 장에서 Foreign key와 join에 대해 자세히 알아보도록 하자. 
 
+> ## 5. ERD Modeling 주의점
 
+- 데이터 모델링 시 가장 중요한 것은 ***실제 원천 데이터(raw data)***다.
+  프로젝트 설계 시 분석설계 단계에 앞서서 실제 데이터를 작성해보지 않고 맞다, 틀리다를 논하는 것은 어불성설이다. 모델링의 정확도를 위해 가장 먼저 실제 데이터를 작성해보자. 
 
 
 
 -----------------------
 
-- 참고 링크>
+- Reference
   - [[DB\] ERD(Entity-Relationship Diagram) : 네이버 블로그 (naver.com)](https://m.blog.naver.com/PostView.naver?blogId=dktmrorl&logNo=220475357522&proxyReferer=https:%2F%2Fhuskdoll.tistory.com%2Fm%2F541)
   - https://ko.wikipedia.org/wiki/%EA%B0%9C%EC%B2%B4_(%EC%BB%B4%ED%93%A8%ED%8C%85) 
   - https://mjn5027.tistory.com/43
