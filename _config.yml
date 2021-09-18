@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "custom" # "air", "aqua", "contrast", "dark", "dirt",
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "{ Stranger's devlog }"
+title                    : "Stranger's devlog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "westkitekim"
