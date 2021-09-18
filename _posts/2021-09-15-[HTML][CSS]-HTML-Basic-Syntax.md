@@ -1,5 +1,5 @@
 ---
-title: [HTML][CSS] HTML 기초 문법
+title: HTML 기초 문법
 excerpt:
 
 categories:
