@@ -27,6 +27,7 @@ HyperText Markup Language의 약자로 웹 문서의 내용을 정의하는 언�
 ## CSS
 
 웹 문서의 디자인 스타일 및 레이아웃을 담당(웹 디자인 담당)
+
 tag : `<style> style태그 내부에서 디자인 구성 </style>`
 
 ## JavaScript
