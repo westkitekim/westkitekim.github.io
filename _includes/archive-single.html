@@ -10,6 +10,17 @@
   {% assign title = post.title %}
 {% endif %}
 
+<!--
+    devinlife comments :
+        아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+        기존에는 read_time이 표기. read_time -> date 변경
+    -->
+    <!-- if와 endif의 처음 \%는 %로 수정하고 복붙하기!-->
+    {% if post.date %}
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> </p>
+    {% endif %}
+    <!-- 여기까지 복붙-->
+
 <div class="{{ include.type | default: 'list' }}__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     {% if include.type == "grid" and teaser %}
@@ -26,17 +37,6 @@
     </h2>
     {% include page__meta.html type=include.type %}
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
-    
-    <!--
-    devinlife comments :
-        아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
-        기존에는 read_time이 표기. read_time -> date 변경
-    -->
-    <!-- if와 endif의 처음 \%는 %로 수정하고 복붙하기!-->
-    {% if post.date %}
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> </p>
-    {% endif %}
-    <!-- 여기까지 복붙-->
   
   </article>
 </div>
