@@ -3,7 +3,7 @@ title: "[HTML] HTML Basic Syntax-(2)"
 excerpt:
 
 categories:
-  - Database
+  - Web
 tags:
   [HTML, CSS, Javascript]
 
@@ -16,7 +16,7 @@ last_modified_at: 2021-09-20
 
 
 
-## 
-
 ## CSS
+
+
 
