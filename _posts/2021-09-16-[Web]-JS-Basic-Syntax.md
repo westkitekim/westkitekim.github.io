@@ -5,15 +5,16 @@ excerpt:
 categories:
   - Web
 tags:
-  [Web, java, JDBC]
+  [Web, java, Javascript]
 
 toc: true
 toc_sticky: true
 
-date: 2021-09-16
-last_modified_at: 2021-09-16
+date: 2021-09-21
+last_modified_at: 2021-09-21
 ---
 
 
 
 ## JavaScript Basic Syntax
+
