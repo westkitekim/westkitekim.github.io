@@ -124,6 +124,36 @@ CSS 디자인은 HTML 문서에서 `<style>` 태그 안에 구현된다.
 
 클래스 선택자와 id 선택자는 속성값으로 사용된다. 
 
+### div / span
+
+```html
+...
+<head>
+...
+<link rel="stylesheet" type="text/css" href="css/mystyle.css">
+</head>
+<body>
+<!-- css는 div, 개발자는 span을 많이 사용 ==> 영역을 잡는 부분에서 차이가 있다 -->
+<div>이 부분은 div 영역입니다</div>
+<span>이 부분은 span 영역입니다</span>
+
+<!-- css selector 는 class는 .클래스명, id는 #아이디명 
+	 testDiv class 는 orange 색상, testSpan id 는 yellow 색상 적용시켜 본다
+-->
+<div class="testDiv">이 부분은 testDiv 클래스가 적용된 div 영역입니다</div>
+<div>이 부분은 div 영역입니다</div>
+<div class="testDiv">이 부분은 testDiv 클래스가 적용된 div 영역입니다</div>
+<span id="testSpan">이 부분은 testSpan 아이디가 적용된 span 영역입니다</span>
+</body>
+</html>
+```
+
+- div 와 span 태그는 영역을 잡는 부분에서 차이가 있다. div는 div의 내용과 div가 자리하는 한 줄 전체의 영역(빈 공간까지)을 포함하고 span영역은 내용이 자리하는 영역만을 나타낸다. 
+
+
+
+
+
 
 
 
