@@ -120,21 +120,11 @@ last_modified_at: 2021-09-26
 3. 업무를 처리하는 비즈니스 로직 수행
 4. 보안, 사용자 관리 등 강력한 기능 제공 
 
-
-
 ### 	3. WAS 종류
 
 웹로직(WebLogic), 웹스피어(WebSphere), 제우스(Jeus), 제이보스(JBoss), 톰캣(Tomcat) ... etc
 
-
-
-
-
-
-
-
-
-
+<br><br><br><br>
 
 ## References
 
