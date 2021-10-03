@@ -14,23 +14,23 @@ date: 2021-09-21
 last_modified_at: 2021-09-21
 ---
 
-
+<style>
+    .highlight {
+        background-color: #e9e97f
+    }
+</style>
 
 ## JavaScript
 
 - ECMAScript 표준을 준수하는 스크립트 언어 
 
-자바스크립트는 객체(Object) 기반의 스크립트 언어로 주로 웹의 동작을 구현하는데 사용된다. HTML에서는 웹 문서의 내용을 구성하고 CSS에서는 웹 문서의 레이아웃이나 색상, 스타일 등 디자인을 담당했다면 JS에서는 웹 문서의 각 요소를 필요에 따라 스타일을 변경하거나 동적으로 움직이게 할 수 있다. 
+자바스크립트는 객체(Object) 기반의 스크립트 언어로 주로 <span class="highlight">**웹의 동작을 구현**</span>하는데 사용된다. HTML에서는 웹 문서의 내용을 구성하고 CSS에서는 웹 문서의 레이아웃이나 색상, 스타일 등 디자인을 담당했다면 JS에서는 웹 문서의 각 요소를 필요에 따라 동적으로 움직이게 할 수 있다. 
 
 아래는 자바스크립트의 예시 중 하나이다. 
 
 ![javascript-example1](https://user-images.githubusercontent.com/88620416/134262596-bd1cb279-8b2b-4f1d-8079-2ecd7c91a9e0.png)
 
 메뉴 화면에서 '문제'라는 탭에 마우스를 가져가면 아래의 그림과 같이 같은 위치에 여러가지 하위 메뉴가 나타나는 것을 볼 수 있다. 이러한 동작이 자바스크립트를 통해 만들어 질 수 있다. 
-
-## Java 와 JavaScript
-
-
 
 
 
