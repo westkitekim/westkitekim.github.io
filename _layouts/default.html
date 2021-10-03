@@ -17,9 +17,12 @@
     {% include head/custom.html %}
     <!--여기부터-->
     <style> 
+    .initial-content {
+      font-family: 'Noto Serif KR', serif;
+    }
     /*font : Noto Serif 추가 */
     @font-face {
-        font-family: 'Noto Serif KR', serif;
+        font-family: 'Gowun Dodum', sans-serif; 
         src: url();
       }
     
@@ -40,6 +43,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    
+    <!-- font : Gowun Dodum-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
