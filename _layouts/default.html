@@ -17,6 +17,12 @@
     {% include head/custom.html %}
     <!--여기부터-->
     <style> 
+    /*font : Noto Serif 추가 */
+    @font-face {
+        font-family: 'Noto Serif KR', serif;
+        src: url();
+      }
+    
       ::-webkit-scrollbar{width: 14px;}
       ::-webkit-scrollbar-track {background-color:#4b4f52; border-radius: 16px;}
       ::-webkit-scrollbar-thumb {background-color:#5e6265; border-radius: 16px;}
@@ -25,8 +31,15 @@
       {
           width:12px;height:12px;background:transparent;
       } 
+      
+
     </style>
     <!--여기까지 스크롤바 모양변경 코드 삽입<head>안에 삽입-->
+
+    <!--font : Noto-Serif-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
