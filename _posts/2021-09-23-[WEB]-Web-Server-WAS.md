@@ -1,5 +1,5 @@
 ---
-title: "[WEB] Web Server와 WAS"
+title: "[Web] Web Server와 WAS"
 excerpt:
 
 categories:
