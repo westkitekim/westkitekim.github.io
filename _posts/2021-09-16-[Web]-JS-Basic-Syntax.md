@@ -1,5 +1,5 @@
 ---
-title: "[WEB/JS]JavaScript(1)-Basic Syntax"
+title: "[Web/JS]JavaScript(1)-Basic Syntax"
 excerpt:
 
 categories:
