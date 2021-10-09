@@ -1,5 +1,5 @@
 ---
-title: "[Web] 상태정보 유지기술 - ServletContext, Cookie, Session"
+title: "[Web] 상태정보 유지기술 - Cookie, Session"
 
 categories:
   - Web
