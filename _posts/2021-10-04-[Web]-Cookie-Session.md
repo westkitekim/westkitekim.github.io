@@ -298,9 +298,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
 ## References
 
-- https://doooyeon.github.io/2018/09/10/cookie-and-session.html
-- https://cjh5414.github.io/cookie-and-session/
-- 
+- [https://doooyeon.github.io/2018/09/10/cookie-and-session.html](https://doooyeon.github.io/2018/09/10/cookie-and-session.html)
+- [https://cjh5414.github.io/cookie-and-session/](https://cjh5414.github.io/cookie-and-session/)
 
 
 
