@@ -15,16 +15,17 @@ last_modified_at: 2021-09-21
 ---
 
 <style>
-    .highlight {
+    #highlight {
         background-color: #e9e97f
     }
 </style>
 
+
 ## JavaScript
 
-- ECMAScript 표준을 준수하는 스크립트 언어 
+- 웹 브라우저에서 작동하는 프로그래밍 언어이자 ECMAScript 표준을 준수하는 스크립트 언어 
 
-자바스크립트는 객체(Object) 기반의 스크립트 언어로 주로 <span class="highlight">**웹의 동작을 구현**</span>하는데 사용된다. HTML에서는 웹 문서의 내용을 구성하고 CSS에서는 웹 문서의 레이아웃이나 색상, 스타일 등 디자인을 담당했다면 JS에서는 웹 문서의 각 요소를 필요에 따라 동적으로 움직이게 할 수 있다. 
+자바스크립트는 객체(Object) 기반의 스크립트 언어로 주로 <span id="highlight">**웹의 동작을 구현**</span>하는데 사용된다. HTML에서는 웹 문서의 내용을 구성하고 CSS에서는 웹 문서의 레이아웃이나 색상, 스타일 등 디자인을 담당했다면 JS에서는 웹 문서의 각 요소를 필요에 따라 동적으로 움직이게 할 수 있다. 
 
 아래는 자바스크립트의 예시 중 하나이다. 
 
