@@ -300,14 +300,15 @@ defaults:
       share: true
       related: true
 
-  # _pages
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: splash
-      author_profile: true
-      read_time: true
-      comments: # true
-      share: true
-      related: true
+  # 이거 쓰면 포스트의 제목, 사이드바, toc 다 사라진다고... 
+  # #_pages
+  # - scope:
+  #     path: ""
+  #     type: posts
+  #   values:
+  #     layout: splash
+  #     author_profile: true
+  #     read_time: true
+  #     comments: # true
+  #     share: true
+  #     related: true
