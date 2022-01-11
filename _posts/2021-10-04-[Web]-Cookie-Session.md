@@ -13,16 +13,10 @@ date: 2021-10-04
 last_modified_at: 2021-10-04
 ---
 
-
-
-<br>
-
 <style>
     .highlight{background-color: e9e97f;}
 </style>
 
-
-<br>
 
 ## 0. 상태정보 유지 기술의 필요성
 
