@@ -1,4 +1,7 @@
 ---
+header:
+  image: /assets/images/coffee.jpg
+
 title: "[Web] Web Server와 WAS"
 excerpt:
 
