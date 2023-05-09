@@ -299,6 +299,7 @@ defaults:
       comments: # true
       share: true
       related: true
+      sidebar_main: true
 
   # 이거 쓰면 포스트의 제목, 사이드바, toc 다 사라진다고... 
   # #_pages
