@@ -12,7 +12,7 @@
       </li>
       <li>
         <!-- span 태그로 카테고리들을 크게 분류 ex) C/C++/C# -->
-        <span class="nav__sub-title">Java</span>
+        <span class="nav__sub-title">Lan</span>
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
                 <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
@@ -25,12 +25,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "STL" %}
-                        <li><a href="/categories/stl" class="">C++ STL & 표준 ({{category[1].size}})</a></li>
+                    {% if category[0] == "Java_NKS" %}
+                        <li><a href="/categories/java_NKS" class="">자바의정석 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Coding Test</span>
+
+        <span class="nav__sub-title">Algorithm</span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Algorithm" %}
@@ -40,11 +41,26 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Programmers" %}
-                        <li><a href="/categories/programmers" class="">프로그래머스 ({{category[1].size}})</a></li>
+                    {% if category[0] == "Baekjoon" %}
+                        <li><a href="/categories/algorithm" class="">Baekjoon({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
-      </li>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Programmers" %}
+                        <li><a href="/categories/programmers" class="">Programmers({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>   
+        <span class="nav__sub-title">Web</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Web" %}
+                        <li><a href="/categories/web" class="">Web({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
   </ul>
 </nav>
