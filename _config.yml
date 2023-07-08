@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "custom-dirt" # "air", "aqua", "contrast", "dark", "d
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Shoveler's log"
+title                    : "Shoveller's log"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "westkitekim"
@@ -105,7 +105,7 @@ author:
   name             : "Stranger"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : # ""
-  location         : # "Seoul"
+  location         : # "Wonderland"
   email            : "westkite418@gmail.com"
   links:
     - label: "Email"
