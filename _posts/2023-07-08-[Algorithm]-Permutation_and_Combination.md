@@ -84,7 +84,7 @@ private static void rptPermutation(ArrayList<Integer> list, int count) {
 
 - 서로 다른 n개 중에 r개를 선택하는 경우의 수
 
-- **순서 X**
+- **순서 X -> 조합은 순서 상관없으니 종류로 생각!**
 
 - ![](https://blog.kakaocdn.net/dn/bQEZNg/btq21L8ylyu/al7s6rnAwMCZLXZO4hoIC0/img.png)
 
@@ -113,7 +113,7 @@ private static void combination(ArrayList<Integer> list, int index, int count) {
 ## 4) 중복조합(Combination  with Repetition)
 
 - 서로 다른 n개 중에 r개를 선택하는 경우의 수 + **집합의 원소를 중복하여 선택가능**
-- **순서 X**
+- **순서 X -> 조합은 순서 상관없으니 종류로 생각!**
 - ![](https://blog.kakaocdn.net/dn/bttqme/btqXHfNU33g/7t4FEAp9Qv1goDkkNALQO0/img.png)
 
 ```java
