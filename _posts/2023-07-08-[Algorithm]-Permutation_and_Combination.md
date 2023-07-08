@@ -1,6 +1,6 @@
 ---
 title: "[Algorithm] 순열(Permutation)과 조합(Combination)"
-excerpt: "부제목"
+excerpt: "순열과 조합 재귀롤 구현하기"
 
 categories:
   - Algorithm
